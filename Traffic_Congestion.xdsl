@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="KarachiTrafficBN" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="TimeOfDay">
+			<state id="PeakHours" />
+			<state id="OffPeak" />
+			<state id="NightTime" />
+			<probabilities>0.35 0.45 0.2</probabilities>
+		</cpt>
+		<cpt id="DayOfWeek">
+			<state id="Weekday" />
+			<state id="Weekend" />
+			<state id="PublicHoliday" />
+			<probabilities>0.62 0.3 0.08</probabilities>
+		</cpt>
+		<cpt id="WeatherCondition">
+			<state id="Clear" />
+			<state id="Rainy" />
+			<state id="Monsoon" />
+			<probabilities>0.65 0.2 0.15</probabilities>
+		</cpt>
+		<cpt id="RoadWork">
+			<state id="Present" />
+			<state id="Absent" />
+			<probabilities>0.25 0.75</probabilities>
+		</cpt>
+		<cpt id="SignalFailure">
+			<state id="Yes" />
+			<state id="No" />
+			<probabilities>0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="PublicTransport">
+			<state id="Adequate" />
+			<state id="Inadequate" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="TrafficVolume">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>TimeOfDay DayOfWeek</parents>
+			<probabilities>0.85 0.12 0.03 0.55 0.35 0.1 0.1 0.3 0.6 0.5 0.35 0.15 0.25 0.45 0.3 0.05 0.2 0.75 0.1 0.25 0.65 0.1 0.2 0.7 0.02 0.1 0.88</probabilities>
+		</cpt>
+		<cpt id="PrivateVehicleDensity">
+			<state id="VeryHigh" />
+			<state id="High" />
+			<state id="Moderate" />
+			<state id="Low" />
+			<parents>PublicTransport TrafficVolume</parents>
+			<probabilities>0.25 0.45 0.25 0.05 0.15 0.4 0.35 0.1 0.05 0.2 0.5 0.25 0.55 0.35 0.08 0.02 0.35 0.45 0.15 0.05 0.1 0.35 0.4 0.15</probabilities>
+		</cpt>
+		<cpt id="RoadCondition">
+			<state id="Good" />
+			<state id="Moderate" />
+			<state id="Poor" />
+			<parents>WeatherCondition RoadWork</parents>
+			<probabilities>0.1 0.35 0.55 0.4 0.4 0.2 0.02 0.18 0.8 0.08 0.3 0.62 0.01 0.09 0.9 0.05 0.25 0.7</probabilities>
+		</cpt>
+		<cpt id="AccidentOccurrence">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>RoadCondition PrivateVehicleDensity SignalFailure</parents>
+			<probabilities>0.35 0.65 0.15 0.85 0.25 0.75 0.1 0.9 0.15 0.85 0.05 0.95 0.08 0.92 0.02 0.98 0.5 0.5 0.25 0.75 0.38 0.62 0.18 0.82 0.22 0.78 0.1 0.9 0.12 0.88 0.05 0.95 0.7 0.3 0.45 0.55 0.58 0.42 0.32 0.68 0.4 0.6 0.18 0.82 0.22 0.78 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="CongestionLevel">
+			<state id="Severe" />
+			<state id="Moderate" />
+			<state id="Low" />
+			<parents>TrafficVolume RoadCondition AccidentOccurrence SignalFailure PrivateVehicleDensity</parents>
+			<probabilities>0.97 0.02 0.01 0.97 0.02 0.01 0.92 0.05 0.03 0.9 0.06 0.04 0.95 0.03 0.02 0.88 0.07000000000000001 0.05 0.82 0.11 0.07000000000000001 0.8 0.12 0.08 0.85 0.09 0.06 0.78 0.13 0.09 0.72 0.17 0.11 0.7 0.18 0.12 0.75 0.15 0.1 0.68 0.19 0.13 0.62 0.23 0.15 0.6 0.24 0.16 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.92 0.05 0.03 0.9 0.06 0.04 0.95 0.03 0.02 0.88 0.07000000000000001 0.05 0.82 0.11 0.07000000000000001 0.8 0.12 0.08 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.75 0.15 0.1 0.68 0.19 0.13 0.62 0.23 0.15 0.6 0.24 0.16 0.65 0.21 0.14 0.58 0.25 0.17 0.52 0.29 0.19 0.5 0.3 0.2 0.55 0.27 0.18 0.48 0.23 0.29 0.42 0.26 0.32 0.4 0.27 0.33 0.45 0.25 0.3 0.38 0.28 0.34 0.32 0.31 0.37 0.3 0.32 0.38 0.95 0.03 0.02 0.88 0.07000000000000001 0.05 0.82 0.11 0.07000000000000001 0.8 0.12 0.08 0.85 0.09 0.06 0.78 0.13 0.09 0.72 0.17 0.11 0.7 0.18 0.12 0.75 0.15 0.1 0.68 0.19 0.13 0.62 0.23 0.15 0.6 0.24 0.16 0.65 0.21 0.14 0.58 0.25 0.17 0.52 0.29 0.19 0.5 0.3 0.2 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.97 0.02 0.01 0.92 0.05 0.03 0.9 0.06 0.04 0.95 0.03 0.02 0.88 0.07000000000000001 0.05 0.82 0.11 0.07000000000000001 0.8 0.12 0.08 0.85 0.09 0.06 0.78 0.13 0.09 0.72 0.17 0.11 0.7 0.18 0.12 0.5 0.3 0.2 0.43 0.26 0.31 0.37 0.28 0.35 0.35 0.29 0.36 0.4 0.27 0.33 0.33 0.3 0.37 0.27 0.33 0.4 0.25 0.34 0.41 0.3 0.32 0.38 0.23 0.35 0.42 0.17 0.37 0.46 0.15 0.38 0.47 0.2 0.36 0.44 0.13 0.39 0.48 0.07000000000000001 0.42 0.51 0.05 0.43 0.52 0.7 0.18 0.12 0.63 0.22 0.15 0.57 0.26 0.17 0.55 0.27 0.18 0.6 0.24 0.16 0.53 0.28 0.19 0.47 0.24 0.29 0.45 0.25 0.3 0.5 0.3 0.2 0.43 0.26 0.31 0.37 0.28 0.35 0.35 0.29 0.36 0.4 0.27 0.33 0.33 0.3 0.37 0.27 0.33 0.4 0.25 0.34 0.41 0.9 0.06 0.04 0.83 0.1 0.07000000000000001 0.77 0.14 0.09 0.75 0.15 0.1 0.8 0.12 0.08 0.73 0.16 0.11 0.67 0.2 0.13 0.65 0.21 0.14 0.7 0.18 0.12 0.63 0.22 0.15 0.57 0.26 0.17 0.55 0.27 0.18 0.6 0.24 0.16 0.53 0.28 0.19 0.47 0.24 0.29 0.45 0.25 0.3</probabilities>
+		</cpt>
+		<cpt id="CommuteDelay">
+			<state id="Over60min" />
+			<state id="Bet30to60min" />
+			<state id="Under30min" />
+			<parents>CongestionLevel</parents>
+			<probabilities>0.75 0.2 0.05 0.15 0.6 0.25 0.03 0.22 0.75</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 5.0.5310.0 ACADEMIC" name="KarachiTraffic">
+			<node id="TimeOfDay">
+				<name>TimeOfDay</name>
+				<interior color="e0f0ff" />
+				<outline color="4080c0" />
+				<font color="000000" name="Arial" size="8" />
+				<position>300 50 420 105</position>
+			</node>
+			<node id="DayOfWeek">
+				<name>DayOfWeek</name>
+				<interior color="e0f0ff" />
+				<outline color="4080c0" />
+				<font color="000000" name="Arial" size="8" />
+				<position>80 50 200 105</position>
+			</node>
+			<node id="WeatherCondition">
+				<name>WeatherCondition</name>
+				<interior color="e0f0ff" />
+				<outline color="4080c0" />
+				<font color="000000" name="Arial" size="8" />
+				<position>520 50 660 105</position>
+			</node>
+			<node id="RoadWork">
+				<name>RoadWork</name>
+				<interior color="e0f0ff" />
+				<outline color="4080c0" />
+				<font color="000000" name="Arial" size="8" />
+				<position>700 50 820 105</position>
+			</node>
+			<node id="SignalFailure">
+				<name>SignalFailure</name>
+				<interior color="ffe0e0" />
+				<outline color="c04040" />
+				<font color="000000" name="Arial" size="8" />
+				<position>700 180 820 235</position>
+			</node>
+			<node id="PublicTransport">
+				<name>PublicTransport</name>
+				<interior color="e0f0ff" />
+				<outline color="4080c0" />
+				<font color="000000" name="Arial" size="8" />
+				<position>50 180 200 235</position>
+			</node>
+			<node id="TrafficVolume">
+				<name>TrafficVolume</name>
+				<interior color="fff0c0" />
+				<outline color="c0a000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>200 180 330 235</position>
+			</node>
+			<node id="PrivateVehicleDensity">
+				<name>PrivateVehicleDensity</name>
+				<interior color="fff0c0" />
+				<outline color="c0a000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>120 340 300 395</position>
+			</node>
+			<node id="RoadCondition">
+				<name>RoadCondition</name>
+				<interior color="fff0c0" />
+				<outline color="c0a000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>519 180 659 235</position>
+			</node>
+			<node id="AccidentOccurrence">
+				<name>AccidentOccurrence</name>
+				<interior color="ffe0e0" />
+				<outline color="c04040" />
+				<font color="000000" name="Arial" size="8" />
+				<position>400 340 580 395</position>
+			</node>
+			<node id="CongestionLevel">
+				<name>CongestionLevel</name>
+				<interior color="ffc0c0" />
+				<outline color="800000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>279 490 439 545</position>
+			</node>
+			<node id="CommuteDelay">
+				<name>CommuteDelay</name>
+				<interior color="c0ffc0" />
+				<outline color="408040" />
+				<font color="000000" name="Arial" size="8" />
+				<position>270 626 450 681</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>
