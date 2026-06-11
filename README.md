@@ -22,13 +22,13 @@ A probabilistic graphical model for urban traffic congestion in Karachi, Pakista
 
 ## General Probabilities 
 
-| Node | States | Probabilities |
-TimeOfDay | Peak / OffPeak / | Night 0.35 / 0.45 / 0.20 |
-DayOfWeek | Weekday / Weekend / Holiday | 0.57 / 0.29 / 0.14 |
-WeatherCondition | Clear / Rainy / Monsoon | 0.65 / 0.20 / 0.15 |
-RoadWork | Present / Absent | 0.25 / 0.75 |
-SignalFailure | Yes / No | 0.30 / 0.70 |
-PublicTransport | Adequate / Inadequate | 0.20 / 0.80 |
+**| Node | States | Probabilities |
+| TimeOfDay | Peak / OffPeak / | Night 0.35 / 0.45 / 0.20 |
+| DayOfWeek | Weekday / Weekend / Holiday | 0.57 / 0.29 / 0.14 |
+| WeatherCondition | Clear / Rainy / Monsoon | 0.65 / 0.20 / 0.15 |
+| RoadWork | Present / Absent | 0.25 / 0.75 |
+| SignalFailure | Yes / No | 0.30 / 0.70 |
+| PublicTransport | Adequate / Inadequate | 0.20 / 0.80 |**
 
 
 ## Use Cases
