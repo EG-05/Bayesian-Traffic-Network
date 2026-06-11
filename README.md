@@ -2,14 +2,6 @@
 
 A probabilistic graphical model for urban traffic congestion in Karachi, Pakistan. Built using GeNIe Modeler (SMILE/XDSL format).
 
-## Files
-
-| File | Description |
-|------|-------------|
-| `karachi_traffic_bn.xdsl` | GeNIe network file — open directly in GeNIe 4.0+ |
-
-## Requirements
-
 - [GeNIe Modeler](https://www.bayesfusion.com/) (free academic license available)
 
 ## How to Run
@@ -27,6 +19,17 @@ A probabilistic graphical model for urban traffic congestion in Karachi, Pakista
 - **Intermediate (4):** TrafficVolume, PrivateVehicleDensity, RoadCondition, AccidentOccurrence
 - **Target:** CongestionLevel
 - **Leaf (2):** CommuteDelay, EconomicImpact
+
+## General Probabilities 
+
+| Node | States | Probabilities |
+TimeOfDay | Peak / OffPeak / | Night 0.35 / 0.45 / 0.20 |
+DayOfWeek | Weekday / Weekend / Holiday | 0.57 / 0.29 / 0.14 |
+WeatherCondition | Clear / Rainy / Monsoon | 0.65 / 0.20 / 0.15 |
+RoadWork | Present / Absent | 0.25 / 0.75 |
+SignalFailure | Yes / No | 0.30 / 0.70 |
+PublicTransport | Adequate / Inadequate | 0.20 / 0.80 |
+
 
 ## Use Cases
 
